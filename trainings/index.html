@@ -42,7 +42,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                <li class="toctree-l1"><a class="reference internal" href="..">General</a>
                 </li>
               </ul>
               <ul>
@@ -166,12 +166,14 @@ The response will be a JSON object containing an array of training sessions. Eac
 <pre><code>GET https://customerrestservice-personaltraining.rahtiapp.fi/gettrainings
 </code></pre>
 <p>Response: </p>
-<p>The response will be a JSON object containing an array of training sessions. Each training session object includes the id, date, duration, activity, and the associated customer's information.
-- <code>id</code>:  The unique identifier of the training session.
-- <code>date</code>: The date and time of the training session.
-- <code>duration</code>: The duration of the training session, in minutes.
-- <code>activity</code>: The type of activity performed during the training session.
-- <code>customer</code>: An object containing the associated customer's information.</p>
+<p>The response will be a JSON object containing an array of training sessions. Each training session object includes the id, date, duration, activity, and the associated customer's information.</p>
+<ul>
+<li><code>id</code>:  The unique identifier of the training session.</li>
+<li><code>date</code>: The date and time of the training session.</li>
+<li><code>duration</code>: The duration of the training session, in minutes.</li>
+<li><code>activity</code>: The type of activity performed during the training session.</li>
+<li><code>customer</code>: An object containing the associated customer's information.</li>
+</ul>
 <p>Example Response:</p>
 <pre><code class="language-json">[
   {
