@@ -88,6 +88,7 @@ GET https://customerrestservice-personaltraining.rahtiapp.fi/gettrainings
 Response: 
 
 The response will be a JSON object containing an array of training sessions. Each training session object includes the id, date, duration, activity, and the associated customer's information.
+
 - `id`:  The unique identifier of the training session.
 - `date`: The date and time of the training session.
 - `duration`: The duration of the training session, in minutes.

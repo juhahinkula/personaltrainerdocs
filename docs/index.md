@@ -4,7 +4,8 @@
 
 This REST API is designed to manage the relationship between personal trainers and their customers. It provides a set of CRUD (Create, Read, Update, Delete) operations to manage both customers and their associated training sessions.
 
-Overview
+Overview:
+
 The API is structured around two main resources: **Customers** and **Trainings**.
 
 - Customers represent the individuals who are receiving personal training. Each customer has attributes such as name and contact information.
@@ -19,7 +20,7 @@ https://customerrestservice-personaltraining.rahtiapp.fi/api
 ```
 
 ## Reset Database
-To reset database you can use the following request
+To reset database you can use the following request that deletes all data from the database and re-populate it with the original demo data. 
 
 ```
 POST https://customerrestservice-personaltraining.rahtiapp.fi/api/reset
