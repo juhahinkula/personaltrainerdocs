@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Customers - Personal Trainer REST API</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Customers";
+        var mkdocs_page_input_path = "customers.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/js.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Personal Trainer REST API
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Customers</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#base-url">Base URL</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#endpoints">Endpoints</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get-all-customers">Get All Customers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get-customer-by-id">Get Customer by Id</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#create-new-customer">Create New Customer</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-customer">Update Customer</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#delete-customer">Delete Customer</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../trainings/">Trainings</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Personal Trainer REST API</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Customers</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="customers">Customers</h1>
+<h2 id="base-url">Base URL</h2>
+<pre><code>https://customerrestservice-personaltraining.rahtiapp.fi/api
+</code></pre>
+<h2 id="endpoints">Endpoints</h2>
+<h3 id="get-all-customers">Get All Customers</h3>
+<p>To retrieve all customers , you can use the <code>GET /customers</code> endpoint.</p>
+<p>Request:</p>
+<p>No parameters are required for this endpoint.</p>
+<p>Response:</p>
+<p>The response is a JSON object with a <code>_embedded</code> field containing an array of customers. Each customer object includes the following fields:</p>
+<ul>
+<li><code>firstname</code>: The customer's first name. (string)</li>
+<li><code>lastname</code>: The customer's last name. (string)</li>
+<li><code>streetaddress</code>: The customer's street address. (string)</li>
+<li><code>postcode</code>: The customer's postal code. (string)</li>
+<li><code>city</code>: The city where the customer lives. (string)</li>
+<li><code>email</code>: The customer's email address. (string)</li>
+<li><code>phone</code>: The customer's phone number. (string)</li>
+<li><code>_links</code>: A set of links related to the customer. Each link object includes:<ul>
+<li><code>self</code>: A link to the customer's own information. (string)</li>
+<li><code>customer</code>: A link to the customer's information. (string)</li>
+<li><code>trainings</code>: A link to the customer's trainings. (string)</li>
+</ul>
+</li>
+</ul>
+<p>Example Response</p>
+<pre><code class="language-json">{
+  &quot;_embedded&quot;: {
+    &quot;customers&quot;: [
+      {
+        &quot;firstname&quot;: &quot;Mark&quot;,
+        &quot;lastname&quot;: &quot;Johnson&quot;,
+        &quot;streetaddress&quot;: &quot;5th Street&quot;,
+        &quot;postcode&quot;: &quot;23110&quot;,
+        &quot;city&quot;: &quot;Flintsone&quot;,
+        &quot;email&quot;: &quot;john@mail.com&quot;,
+        &quot;phone&quot;: &quot;232-2345540&quot;,
+        &quot;_links&quot;: {
+          &quot;self&quot;: {
+            &quot;href&quot;: &quot;https://customerrestservice-personaltraining.rahtiapp.fi/api/customers/1002&quot;
+          },
+          &quot;customer&quot;: {
+            &quot;href&quot;: &quot;https://customerrestservice-personaltraining.rahtiapp.fi/api/customers/1002&quot;
+          },
+          &quot;trainings&quot;: {
+            &quot;href&quot;: &quot;https://customerrestservice-personaltraining.rahtiapp.fi/api/customers/1002/trainings&quot;
+          }
+        }
+      },
+      // Additional customers...
+    ]
+  }
+}
+</code></pre>
+<h3 id="get-customer-by-id">Get Customer by Id</h3>
+<p>To retrieve a specific customer's details, you can use the <code>GET /customers/{id}</code> endpoint, where <code>{id}</code> is the unique identifier of the customer.</p>
+<p>Request:</p>
+<ul>
+<li>The request does not require a request body, only the customer's id as a path parameter.</li>
+</ul>
+<p>Path Parameters:</p>
+<ul>
+<li><code>id</code> (required): The unique identifier of the customer. This is an integer.</li>
+</ul>
+<p>Example Request:</p>
+<pre><code>GET /customers/123
+</code></pre>
+<h3 id="create-new-customer">Create New Customer</h3>
+<p>To create a new customer you can use <code>POST /customers</code> endpoint.</p>
+<p>Request:</p>
+<p>This endpoint requires a JSON object in the request body with the following fields:</p>
+<ul>
+<li><code>firstname</code>: The customer's first name. (string, required)</li>
+<li><code>lastname</code>: The customer's last name. (string, required)</li>
+<li><code>email</code>: The customer's email address. (string, required)</li>
+<li><code>phone</code>: The customer's phone number. (string, required)</li>
+<li><code>streetaddress</code>: The customer's street address. (string, required)</li>
+<li><code>postcode</code>: The customer's postal code. (string, required)</li>
+<li><code>city</code>: The city where the customer lives. (string, required)</li>
+</ul>
+<p>Headers:</p>
+<p><code>'Content-Type': 'application/json'</code>.</p>
+<p>Example Request:</p>
+<pre><code class="language-json">POST https://customerrestservice-personaltraining.rahtiapp.fi/api/customers
+Content-Type: application/json
+
+{
+  &quot;firstname&quot;: &quot;John&quot;,
+  &quot;lastname&quot;: &quot;Smith&quot;,
+  &quot;email&quot;: &quot;j.s@smith.com&quot;,
+  &quot;phone&quot;: &quot;343-2332345&quot;,
+  &quot;streetaddress&quot;: &quot;Yellow Street 23&quot;,
+  &quot;postcode&quot;: &quot;344342&quot;,
+  &quot;city&quot;: &quot;Yellowstone&quot;
+}
+</code></pre>
+<h3 id="update-customer">Update Customer</h3>
+<p>To update a specific customer's details, you can use the <code>PUT /customers/{id}</code> endpoint, where <code>{id}</code> is the unique identifier of the customer.</p>
+<p>Request:</p>
+<p>The request requires the customer's id as a path parameter and the updated customer details in the request body as a JSON string.</p>
+<p>Headers:</p>
+<p><code>Content-Type: 'application/json'</code></p>
+<p>Path Parameters:</p>
+<p><code>id</code> (required): The unique identifier of the customer. This is an integer.</p>
+<p>Request Body:
+The request body should be a JSON object containing the updated customer details. All fields are optional, and only the provided fields will be updated.</p>
+<ul>
+<li><code>firstname</code>: The first name of the customer.</li>
+<li><code>lastname</code>: The last name of the customer.</li>
+<li><code>email</code>: The email address of the customer.</li>
+<li><code>phone</code>: The phone number of the customer.</li>
+<li><code>streetaddress</code>: The street address of the customer.</li>
+<li><code>postcode</code>: The postal code of the customer's address.</li>
+<li><code>city</code>: The city of the customer's address.</li>
+</ul>
+<p>Example Request:</p>
+<pre><code class="language-json">PUT /customers/123
+Content-Type: application/json
+
+{
+    &quot;firstname&quot;: &quot;John&quot;,
+    &quot;lastname&quot;: &quot;Smith&quot;,
+    &quot;email&quot;: &quot;j.s@smith.com&quot;,
+    &quot;phone&quot;: &quot;342-2332345&quot;,
+    &quot;streetaddress&quot;: &quot;Yellow Street 23&quot;,
+    &quot;postcode&quot;: &quot;144342&quot;,
+    &quot;city&quot;: &quot;Yellowstone&quot;
+}
+</code></pre>
+<h3 id="delete-customer">Delete Customer</h3>
+<p>To delete a specific customer, you can use the <code>DELETE /customers/{id}</code> endpoint, where <code>{id}</code> is the unique identifier of the customer.</p>
+<p>Request:</p>
+<p>The request does not require a request body, only the customer's <code>`id</code> as a path parameter.</p>
+<p>Path Parameters:</p>
+<p><code>id</code> (required): The unique identifier of the customer. This is an integer.
+Example Request</p>
+<p>Response:</p>
+<p>Upon successful deletion, the API will return a 204 No Content status code. If the customer with the provided id does not exist, the API will return a 404 Not Found status code.</p>
+<p>Important Note:</p>
+<p>Deleting a customer will also delete all associated training sessions for that customer. This operation cannot be undone, so ensure that you want to delete both the customer and all their training sessions before making this request.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../trainings/" class="btn btn-neutral float-right" title="Trainings">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../trainings/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

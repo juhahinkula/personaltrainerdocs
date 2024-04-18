@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Trainings - Personal Trainer REST API</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Trainings";
+        var mkdocs_page_input_path = "trainings.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/js.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Personal Trainer REST API
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../customers/">Customers</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Trainings</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#base-url">Base URL</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#endpoints">Endpoints</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get-all-trainings">Get All Trainings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get-trainings-with-customer-info">Get Trainings with Customer Info</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#add-training">Add Training</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#delete-training">Delete Training</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Personal Trainer REST API</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Trainings</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="trainings">Trainings</h1>
+<h2 id="base-url">Base URL</h2>
+<pre><code>https://customerrestservice-personaltraining.rahtiapp.fi/api
+</code></pre>
+<h2 id="endpoints">Endpoints</h2>
+<h3 id="get-all-trainings">Get All Trainings</h3>
+<p>To retrieve all training sessions, you can use the <code>GET /trainings</code> endpoint.</p>
+<p>Request:</p>
+<p>The request does not require a request body.</p>
+<p>Example Request:</p>
+<pre><code>GET /trainings
+</code></pre>
+<p>Response:
+The response will be a JSON object containing an array of training sessions. Each training session object includes the date, duration, activity, and several links related to the training session.</p>
+<p>Response Object:</p>
+<p>The response object will contain an <code>_embedded</code> object, which includes an array of trainings. Each training object will have the following properties:</p>
+<ul>
+<li><code>date</code>: The date and time of the training session.</li>
+<li><code>duration</code>: The duration of the training session, in minutes.</li>
+<li><code>activity</code>: The type of activity performed during the training session.</li>
+<li><code>_links</code>: An object containing links related to the training session.<ul>
+<li><code>self</code>: A link to the training session itself.</li>
+<li><code>training</code>: Another link to the training session itself.</li>
+<li><code>customer</code>: A link to the customer associated with the training session.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;_embedded&quot;: {
+    &quot;trainings&quot;: [
+      {
+        &quot;date&quot;: &quot;2024-04-18T18:59:46.350+00:00&quot;,
+        &quot;duration&quot;: 30,
+        &quot;activity&quot;: &quot;Gym training&quot;,
+        &quot;_links&quot;: {
+          &quot;self&quot;: {
+            &quot;href&quot;: &quot;https://customerrestservice-personaltraining.rahtiapp.fi/api/trainings/3417&quot;
+          },
+          &quot;training&quot;: {
+            &quot;href&quot;: &quot;https://customerrestservice-personaltraining.rahtiapp.fi/api/trainings/3417&quot;
+          },
+          &quot;customer&quot;: {
+            &quot;href&quot;: &quot;https://customerrestservice-personaltraining.rahtiapp.fi/api/trainings/3417/customer&quot;
+          }
+        }
+      },
+      {
+        &quot;date&quot;: &quot;2024-04-19T18:59:46.350+00:00&quot;,
+        &quot;duration&quot;: 90,
+        &quot;activity&quot;: &quot;Zumba&quot;,
+        &quot;_links&quot;: {
+          &quot;self&quot;: {
+            &quot;href&quot;: &quot;https://customerrestservice-personaltraining.rahtiapp.fi/api/trainings/3418&quot;
+          },
+          &quot;training&quot;: {
+            &quot;href&quot;: &quot;https://customerrestservice-personaltraining.rahtiapp.fi/api/trainings/3418&quot;
+          },
+          &quot;customer&quot;: {
+            &quot;href&quot;: &quot;https://customerrestservice-personaltraining.rahtiapp.fi/api/trainings/3418/customer&quot;
+          }
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<h3 id="get-trainings-with-customer-info">Get Trainings with Customer Info</h3>
+<p>To retrieve all training sessions along with their associated customer information, you can use the <code>GET https://customerrestservice-personaltraining.rahtiapp.fi/gettrainings</code> endpoint.</p>
+<p>Request:</p>
+<p>The request does not require a request body.</p>
+<p>Example Request:</p>
+<pre><code>GET https://customerrestservice-personaltraining.rahtiapp.fi/gettrainings
+</code></pre>
+<p>Response: </p>
+<p>The response will be a JSON object containing an array of training sessions. Each training session object includes the id, date, duration, activity, and the associated customer's information.
+- <code>id</code>:  The unique identifier of the training session.
+- <code>date</code>: The date and time of the training session.
+- <code>duration</code>: The duration of the training session, in minutes.
+- <code>activity</code>: The type of activity performed during the training session.
+- <code>customer</code>: An object containing the associated customer's information.</p>
+<p>Example Response:</p>
+<pre><code class="language-json">[
+  {
+    &quot;id&quot;: 3417,
+    &quot;date&quot;: &quot;2024-04-18T18:59:46.350+00:00&quot;,
+    &quot;duration&quot;: 30,
+    &quot;activity&quot;: &quot;Gym training&quot;,
+    &quot;customer&quot;: {
+      &quot;id&quot;: 1087,
+      &quot;firstname&quot;: &quot;John&quot;,
+      &quot;lastname&quot;: &quot;Johnson&quot;,
+      &quot;streetaddress&quot;: &quot;5th Street&quot;,
+      &quot;postcode&quot;: &quot;23110&quot;,
+      &quot;city&quot;: &quot;Flintsone&quot;,
+      &quot;email&quot;: &quot;john@mail.com&quot;,
+      &quot;phone&quot;: &quot;232-2345540&quot;
+    }
+  },
+  {
+    &quot;id&quot;: 3418,
+    &quot;date&quot;: &quot;2024-04-19T18:59:46.350+00:00&quot;,
+    &quot;duration&quot;: 90,
+    &quot;activity&quot;: &quot;Zumba&quot;,
+    &quot;customer&quot;: {
+      &quot;id&quot;: 1088,
+      &quot;firstname&quot;: &quot;Mary&quot;,
+      &quot;lastname&quot;: &quot;Philips&quot;,
+      &quot;streetaddress&quot;: &quot;Hill Street 3&quot;,
+      &quot;postcode&quot;: &quot;23322&quot;,
+      &quot;city&quot;: &quot;Flintsone&quot;,
+      &quot;email&quot;: &quot;m.philips@mail.com&quot;,
+      &quot;phone&quot;: &quot;232-310122&quot;
+    }
+  }
+]
+</code></pre>
+<h3 id="add-training">Add Training</h3>
+<p>To add a new training session and link it to a customer, you can use the <code>POST /trainings</code> endpoint.</p>
+<p>Request:</p>
+<p>The request requires a JSON object in the request body containing the details of the new training session and a reference link to the customer.</p>
+<p>Headers:</p>
+<p>Content-Type: 'application/json'</p>
+<p>Request Body:</p>
+<p>The request body should be a JSON object containing the details of the new training session and a reference link to the customer.</p>
+<ul>
+<li><code>date</code>: The date of the training session. The format must be ISO-8601 (e.g., "2024-11-27T09:12:00.000+000").</li>
+<li><code>activity</code>: The type of activity performed during the training session.</li>
+<li><code>duration</code>: The duration of the training session, in minutes.</li>
+<li><code>customer</code>: A link to the customer associated with the training session.</li>
+</ul>
+<p>Example Request:</p>
+<pre><code class="language-json">POST /trainings
+Content-Type: application/json
+
+{
+    &quot;date&quot;: &quot;2024-01-01T12:00:00.000+000&quot;,
+    &quot;activity&quot;: &quot;Spinning&quot;,
+    &quot;duration&quot;: &quot;50&quot;,
+    &quot;customer&quot;: &quot;https://myserver.personaltrainer.api/api/customers/123&quot;
+}
+</code></pre>
+<p>Response:</p>
+<p>The response will be a JSON object containing the details of the newly created training session. If the creation is successful, the API will return a 201 Created status code.</p>
+<h3 id="delete-training">Delete Training</h3>
+<p>To delete a specific training session, you can use the <code>DELETE /trainings/{id}</code> endpoint, where <code>{id}</code> is the unique identifier of the training session.</p>
+<p>Request:</p>
+<p>The request does not require a request body, only the training session's id as a path parameter.</p>
+<p>Path Parameters:</p>
+<ul>
+<li><code>id</code> (required): The unique identifier of the training session. This is an integer.</li>
+</ul>
+<p>Example Request:</p>
+<pre><code>DELETE /trainings/123
+</code></pre>
+<p>Response:</p>
+<p>Upon successful deletion, the API will return a 204 No Content status code. If the training session with the provided id does not exist, the API will return a 404 Not Found status code.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../customers/" class="btn btn-neutral float-left" title="Customers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../customers/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
