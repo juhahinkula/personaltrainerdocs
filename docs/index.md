@@ -23,7 +23,7 @@ https://customerrestservice-personaltraining.rahtiapp.fi/api
 To reset database you can use the following request that deletes all data from the database and re-populate it with the original demo data. 
 
 ```
-POST https://customerrestservice-personaltraining.rahtiapp.fi/api/reset
+POST https://customerrestservice-personaltraining.rahtiapp.fi/reset
 ```
 Response:
 
