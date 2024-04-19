@@ -7,13 +7,15 @@ https://customerrestservice-personaltraining.rahtiapp.fi/api
 ## Endpoints
 
 ### Get All Customers
-To retrieve all customers , you can use the `GET /customers` endpoint.
+Retrieve all customers
 
-Request:
+**Request:**
 
-No parameters are required for this endpoint.
+- HTTP Method: `GET`
+- Endpoint: `/customers`
+- Request parameters: None
 
-Response:
+**Response:**
 
 The response is a JSON object with a `_embedded` field containing an array of customers. Each customer object includes the following fields:
 
@@ -61,39 +63,39 @@ Example Response
 ```
 
 ### Get Customer by Id
-To retrieve a specific customer's details, you can use the `GET /customers/{id}` endpoint, where `{id}` is the unique identifier of the customer.
+Retrieve a specific customer's details.
 
-Request:
+**Request:**
 
-- The request does not require a request body, only the customer's id as a path parameter.
-
-Path Parameters:
-
-- `id` (required): The unique identifier of the customer. This is an integer.
+- HTTP Method: `GET`
+- Endpoint: `/customers/{id}`
+- Path parameters: `{id}` (integer, required) is the unique identifier of the customer
 
 Example Request:
 ```
 GET /customers/123
 ```
+**Response:**
+
+- Body: JSON object with the customer's details.
 
 ### Create New Customer
-To create a new customer you can use `POST /customers` endpoint.
+Create a new customer.
 
-Request:
+**Request:**
 
-This endpoint requires a JSON object in the request body with the following fields:
-
-- `firstname`: The customer's first name. (string, required)
-- `lastname`: The customer's last name. (string, required)
-- `email`: The customer's email address. (string, required)
-- `phone`: The customer's phone number. (string, required)
-- `streetaddress`: The customer's street address. (string, required)
-- `postcode`: The customer's postal code. (string, required)
-- `city`: The city where the customer lives. (string, required)
-
-Headers:
-
- `'Content-Type': 'application/json'`.
+- HTTP Method: `POST`
+- Endpoint: `/customers`
+- Request Headers:
+    - `'Content-Type' : 'application/json'`
+- Request body: JSON object with the following fields (all required)
+    - `firstname`: The customer's first name. (string, required)
+    - `lastname`: The customer's last name. (string, required)
+    - `email`: The customer's email address. (string, required)
+    - `phone`: The customer's phone number. (string, required)
+    - `streetaddress`: The customer's street address. (string, required)
+    - `postcode`: The customer's postal code. (string, required)
+    - `city`: The city where the customer lives. (string, required)
 
 Example Request:
 ```json
@@ -111,32 +113,22 @@ Content-Type: application/json
 }
 ```
 
+**Response:**
+
+- Body: JSON object with the created customer's details.
+
 ### Update Customer
 
-To update a specific customer's details, you can use the `PUT /customers/{id}` endpoint, where `{id}` is the unique identifier of the customer.
+Update a specific customer's details.
 
-Request:
+**Request:**
 
-The request requires the customer's id as a path parameter and the updated customer details in the request body as a JSON string.
-
-Headers:
-
-`Content-Type: 'application/json'`
-
-Path Parameters:
-
-`id` (required): The unique identifier of the customer. This is an integer.
-
-Request Body:
-The request body should be a JSON object containing the updated customer details. All fields are optional, and only the provided fields will be updated.
-
-- `firstname`: The first name of the customer.
-- `lastname`: The last name of the customer.
-- `email`: The email address of the customer.
-- `phone`: The phone number of the customer.
-- `streetaddress`: The street address of the customer.
-- `postcode`: The postal code of the customer's address.
-- `city`: The city of the customer's address.
+- HTTP Method: `PUT`
+- Endpoint: `/customers/{id}`
+- Path Parameters: `id` (integer, required): The unique identifier of the customer.
+- Request Headers:
+    - `'Content-Type' : 'application/json'`
+- Request body: JSON object containing the updated customer details (all fields optional).
 
 Example Request:
 ```json
@@ -153,24 +145,24 @@ Content-Type: application/json
     "city": "Yellowstone"
 }
 ```
+**Response:**
+
+- Body: JSON object with the updated customer's details.
+
 ### Delete Customer
 
-To delete a specific customer, you can use the `DELETE /customers/{id}` endpoint, where `{id}` is the unique identifier of the customer.
+Delete a specific customer.
 
-Request:
+**Request:**
 
-The request does not require a request body, only the customer's ``id` as a path parameter.
+- HTTP Method: `DELETE`
+- Endpoint: `/customers/{id}`
+- Path Parameters: `id` (integer, required): The unique identifier of the customer.
 
-Path Parameters:
+**Response:**
 
-`id` (required): The unique identifier of the customer. This is an integer.
-Example Request
+- Upon successful deletion, the API will return a 204 No Content status code. If the customer with the provided id does not exist, the API will return a 404 Not Found status code.
 
-
-Response:
-
-Upon successful deletion, the API will return a 204 No Content status code. If the customer with the provided id does not exist, the API will return a 404 Not Found status code.
-
-Important Note:
+***Important Note:***
 
 Deleting a customer will also delete all associated training sessions for that customer. This operation cannot be undone, so ensure that you want to delete both the customer and all their training sessions before making this request.

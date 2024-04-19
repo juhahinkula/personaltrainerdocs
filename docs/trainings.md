@@ -8,19 +8,22 @@ https://customerrestservice-personaltraining.rahtiapp.fi/api
 ## Endpoints
 
 ### Get All Trainings
-To retrieve all training sessions, you can use the `GET /trainings` endpoint.
+Retrieve all training sessions
 
-Request:
+**Request:**
 
-The request does not require a request body.
+- HTTP Method: `GET`
+- Endpoint: `/trainings`
+- Request parameters: None
 
 Example Request:
 ```
 GET /trainings
 ```
 
-Response:
-The response will be a JSON object containing an array of training sessions. Each training session object includes the date, duration, activity, and several links related to the training session.
+**Response:** 
+
+- The response will be a JSON object containing an array of training sessions. Each training session object includes the date, duration, activity, and several links related to the training session.
 
 Response Object:
 
@@ -75,17 +78,19 @@ The response object will contain an `_embedded` object, which includes an array 
 }
 ```
 ### Get Trainings with Customer Info
-To retrieve all training sessions along with their associated customer information, you can use the `GET https://customerrestservice-personaltraining.rahtiapp.fi/gettrainings` endpoint.
+Retrieve all training sessions along with their associated customer information.
 
-Request:
+**Request:**
 
-The request does not require a request body.
-
+- HTTP Method: `GET`
+- ENDPOINT: `https://customerrestservice-personaltraining.rahtiapp.fi/gettrainings`
+- Request parameters: None
+ 
 Example Request:
 ```
 GET https://customerrestservice-personaltraining.rahtiapp.fi/gettrainings
 ```
-Response: 
+**Response:** 
 
 The response will be a JSON object containing an array of training sessions. Each training session object includes the id, date, duration, activity, and the associated customer's information.
 
@@ -135,24 +140,19 @@ Example Response:
 
 
 ### Add Training
-To add a new training session and link it to a customer, you can use the `POST /trainings` endpoint.
+Add a new training session and link it to a customer.
 
-Request:
+**Request:**
 
-The request requires a JSON object in the request body containing the details of the new training session and a reference link to the customer.
-
-Headers:
-
-Content-Type: 'application/json'
-
-Request Body:
-
-The request body should be a JSON object containing the details of the new training session and a reference link to the customer.
-
-- `date`: The date of the training session. The format must be ISO-8601 (e.g., "2024-11-27T09:12:00.000+000").
-- `activity`: The type of activity performed during the training session.
-- `duration`: The duration of the training session, in minutes.
-- `customer`: A link to the customer associated with the training session.
+- HTTP Method: `POST`
+- Endpoint: `/trainings`
+- Request Headers:
+    - `'Content-Type' : 'application/json'`
+- Body: JSON object containing the details of the new training session and a reference link to the customer.
+    - `date`: The date of the training session. The format must be ISO-8601 (e.g., "2024-11-27T09:12:00.000+000").
+    - `activity`: The type of activity performed during the training session.
+    - `duration`: The duration of the training session, in minutes.
+    - `customer`: A link to the customer associated with the training session.
 
 Example Request:
 ```json
@@ -172,21 +172,19 @@ Response:
 The response will be a JSON object containing the details of the newly created training session. If the creation is successful, the API will return a 201 Created status code.
 
 ### Delete Training
-To delete a specific training session, you can use the `DELETE /trainings/{id}` endpoint, where `{id}` is the unique identifier of the training session.
+Delete a specific training session.
 
-Request:
+**Request:**
 
-The request does not require a request body, only the training session's id as a path parameter.
-
-Path Parameters:
-
-- `id` (required): The unique identifier of the training session. This is an integer.
+- HTTP Method: `DELETE`
+- Endpoint: `/trainings/{id}`
+- Path Parameters: `id` (integer, required). The unique identifier of the training session.
 
 Example Request:
 ```
 DELETE /trainings/123
 ```
 
-Response:
+**Response:**
 
-Upon successful deletion, the API will return a 204 No Content status code. If the training session with the provided id does not exist, the API will return a 404 Not Found status code.
+- Upon successful deletion, the API will return a 204 No Content status code. If the training session with the provided id does not exist, the API will return a 404 Not Found status code.
