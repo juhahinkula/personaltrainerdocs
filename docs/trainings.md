@@ -138,7 +138,6 @@ Example Response:
 ]
 ```
 
-
 ### Add Training
 Add a new training session and link it to a customer.
 
@@ -167,7 +166,7 @@ Content-Type: application/json
 }
 ```
 
-Response:
+**Response:**
 
 The response will be a JSON object containing the details of the newly created training session. If the creation is successful, the API will return a 201 Created status code.
 

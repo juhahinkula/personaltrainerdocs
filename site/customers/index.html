@@ -100,10 +100,14 @@
 </code></pre>
 <h2 id="endpoints">Endpoints</h2>
 <h3 id="get-all-customers">Get All Customers</h3>
-<p>To retrieve all customers , you can use the <code>GET /customers</code> endpoint.</p>
-<p>Request:</p>
-<p>No parameters are required for this endpoint.</p>
-<p>Response:</p>
+<p>Retrieve all customers</p>
+<p><strong>Request:</strong></p>
+<ul>
+<li>HTTP Method: <code>GET</code></li>
+<li>Endpoint: <code>/customers</code></li>
+<li>Request parameters: None</li>
+</ul>
+<p><strong>Response:</strong></p>
 <p>The response is a JSON object with a <code>_embedded</code> field containing an array of customers. Each customer object includes the following fields:</p>
 <ul>
 <li><code>firstname</code>: The customer's first name. (string)</li>
@@ -150,23 +154,31 @@
 }
 </code></pre>
 <h3 id="get-customer-by-id">Get Customer by Id</h3>
-<p>To retrieve a specific customer's details, you can use the <code>GET /customers/{id}</code> endpoint, where <code>{id}</code> is the unique identifier of the customer.</p>
-<p>Request:</p>
+<p>Retrieve a specific customer's details.</p>
+<p><strong>Request:</strong></p>
 <ul>
-<li>The request does not require a request body, only the customer's id as a path parameter.</li>
-</ul>
-<p>Path Parameters:</p>
-<ul>
-<li><code>id</code> (required): The unique identifier of the customer. This is an integer.</li>
+<li>HTTP Method: <code>GET</code></li>
+<li>Endpoint: <code>/customers/{id}</code></li>
+<li>Path parameters: <code>{id}</code> (integer, required) is the unique identifier of the customer</li>
 </ul>
 <p>Example Request:</p>
 <pre><code>GET /customers/123
 </code></pre>
-<h3 id="create-new-customer">Create New Customer</h3>
-<p>To create a new customer you can use <code>POST /customers</code> endpoint.</p>
-<p>Request:</p>
-<p>This endpoint requires a JSON object in the request body with the following fields:</p>
+<p><strong>Response:</strong></p>
 <ul>
+<li>Body: JSON object with the customer's details.</li>
+</ul>
+<h3 id="create-new-customer">Create New Customer</h3>
+<p>Create a new customer.</p>
+<p><strong>Request:</strong></p>
+<ul>
+<li>HTTP Method: <code>POST</code></li>
+<li>Endpoint: <code>/customers</code></li>
+<li>Request Headers:<ul>
+<li><code>'Content-Type' : 'application/json'</code></li>
+</ul>
+</li>
+<li>Request body: JSON object with the following fields (all required)<ul>
 <li><code>firstname</code>: The customer's first name. (string, required)</li>
 <li><code>lastname</code>: The customer's last name. (string, required)</li>
 <li><code>email</code>: The customer's email address. (string, required)</li>
@@ -175,8 +187,8 @@
 <li><code>postcode</code>: The customer's postal code. (string, required)</li>
 <li><code>city</code>: The city where the customer lives. (string, required)</li>
 </ul>
-<p>Headers:</p>
-<p><code>'Content-Type': 'application/json'</code>.</p>
+</li>
+</ul>
 <p>Example Request:</p>
 <pre><code class="language-json">POST https://customerrestservice-personaltraining.rahtiapp.fi/api/customers
 Content-Type: application/json
@@ -191,24 +203,22 @@ Content-Type: application/json
   &quot;city&quot;: &quot;Yellowstone&quot;
 }
 </code></pre>
-<h3 id="update-customer">Update Customer</h3>
-<p>To update a specific customer's details, you can use the <code>PUT /customers/{id}</code> endpoint, where <code>{id}</code> is the unique identifier of the customer.</p>
-<p>Request:</p>
-<p>The request requires the customer's id as a path parameter and the updated customer details in the request body as a JSON string.</p>
-<p>Headers:</p>
-<p><code>Content-Type: 'application/json'</code></p>
-<p>Path Parameters:</p>
-<p><code>id</code> (required): The unique identifier of the customer. This is an integer.</p>
-<p>Request Body:
-The request body should be a JSON object containing the updated customer details. All fields are optional, and only the provided fields will be updated.</p>
+<p><strong>Response:</strong></p>
 <ul>
-<li><code>firstname</code>: The first name of the customer.</li>
-<li><code>lastname</code>: The last name of the customer.</li>
-<li><code>email</code>: The email address of the customer.</li>
-<li><code>phone</code>: The phone number of the customer.</li>
-<li><code>streetaddress</code>: The street address of the customer.</li>
-<li><code>postcode</code>: The postal code of the customer's address.</li>
-<li><code>city</code>: The city of the customer's address.</li>
+<li>Body: JSON object with the created customer's details.</li>
+</ul>
+<h3 id="update-customer">Update Customer</h3>
+<p>Update a specific customer's details.</p>
+<p><strong>Request:</strong></p>
+<ul>
+<li>HTTP Method: <code>PUT</code></li>
+<li>Endpoint: <code>/customers/{id}</code></li>
+<li>Path Parameters: <code>id</code> (integer, required): The unique identifier of the customer.</li>
+<li>Request Headers:<ul>
+<li><code>'Content-Type' : 'application/json'</code></li>
+</ul>
+</li>
+<li>Request body: JSON object containing the updated customer details (all fields optional).</li>
 </ul>
 <p>Example Request:</p>
 <pre><code class="language-json">PUT /customers/123
@@ -224,16 +234,23 @@ Content-Type: application/json
     &quot;city&quot;: &quot;Yellowstone&quot;
 }
 </code></pre>
+<p><strong>Response:</strong></p>
+<ul>
+<li>Body: JSON object with the updated customer's details.</li>
+</ul>
 <h3 id="delete-customer">Delete Customer</h3>
-<p>To delete a specific customer, you can use the <code>DELETE /customers/{id}</code> endpoint, where <code>{id}</code> is the unique identifier of the customer.</p>
-<p>Request:</p>
-<p>The request does not require a request body, only the customer's <code>`id</code> as a path parameter.</p>
-<p>Path Parameters:</p>
-<p><code>id</code> (required): The unique identifier of the customer. This is an integer.
-Example Request</p>
-<p>Response:</p>
-<p>Upon successful deletion, the API will return a 204 No Content status code. If the customer with the provided id does not exist, the API will return a 404 Not Found status code.</p>
-<p>Important Note:</p>
+<p>Delete a specific customer.</p>
+<p><strong>Request:</strong></p>
+<ul>
+<li>HTTP Method: <code>DELETE</code></li>
+<li>Endpoint: <code>/customers/{id}</code></li>
+<li>Path Parameters: <code>id</code> (integer, required): The unique identifier of the customer.</li>
+</ul>
+<p><strong>Response:</strong></p>
+<ul>
+<li>Upon successful deletion, the API will return a 204 No Content status code. If the customer with the provided id does not exist, the API will return a 404 Not Found status code.</li>
+</ul>
+<p><strong><em>Important Note:</em></strong></p>
 <p>Deleting a customer will also delete all associated training sessions for that customer. This operation cannot be undone, so ensure that you want to delete both the customer and all their training sessions before making this request.</p>
               
             </div>

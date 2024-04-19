@@ -98,14 +98,20 @@
 </code></pre>
 <h2 id="endpoints">Endpoints</h2>
 <h3 id="get-all-trainings">Get All Trainings</h3>
-<p>To retrieve all training sessions, you can use the <code>GET /trainings</code> endpoint.</p>
-<p>Request:</p>
-<p>The request does not require a request body.</p>
+<p>Retrieve all training sessions</p>
+<p><strong>Request:</strong></p>
+<ul>
+<li>HTTP Method: <code>GET</code></li>
+<li>Endpoint: <code>/trainings</code></li>
+<li>Request parameters: None</li>
+</ul>
 <p>Example Request:</p>
 <pre><code>GET /trainings
 </code></pre>
-<p>Response:
-The response will be a JSON object containing an array of training sessions. Each training session object includes the date, duration, activity, and several links related to the training session.</p>
+<p><strong>Response:</strong> </p>
+<ul>
+<li>The response will be a JSON object containing an array of training sessions. Each training session object includes the date, duration, activity, and several links related to the training session.</li>
+</ul>
 <p>Response Object:</p>
 <p>The response object will contain an <code>_embedded</code> object, which includes an array of trainings. Each training object will have the following properties:</p>
 <ul>
@@ -159,13 +165,17 @@ The response will be a JSON object containing an array of training sessions. Eac
 }
 </code></pre>
 <h3 id="get-trainings-with-customer-info">Get Trainings with Customer Info</h3>
-<p>To retrieve all training sessions along with their associated customer information, you can use the <code>GET https://customerrestservice-personaltraining.rahtiapp.fi/gettrainings</code> endpoint.</p>
-<p>Request:</p>
-<p>The request does not require a request body.</p>
+<p>Retrieve all training sessions along with their associated customer information.</p>
+<p><strong>Request:</strong></p>
+<ul>
+<li>HTTP Method: <code>GET</code></li>
+<li>ENDPOINT: <code>https://customerrestservice-personaltraining.rahtiapp.fi/gettrainings</code></li>
+<li>Request parameters: None</li>
+</ul>
 <p>Example Request:</p>
 <pre><code>GET https://customerrestservice-personaltraining.rahtiapp.fi/gettrainings
 </code></pre>
-<p>Response: </p>
+<p><strong>Response:</strong> </p>
 <p>The response will be a JSON object containing an array of training sessions. Each training session object includes the id, date, duration, activity, and the associated customer's information.</p>
 <ul>
 <li><code>id</code>:  The unique identifier of the training session.</li>
@@ -211,18 +221,22 @@ The response will be a JSON object containing an array of training sessions. Eac
 ]
 </code></pre>
 <h3 id="add-training">Add Training</h3>
-<p>To add a new training session and link it to a customer, you can use the <code>POST /trainings</code> endpoint.</p>
-<p>Request:</p>
-<p>The request requires a JSON object in the request body containing the details of the new training session and a reference link to the customer.</p>
-<p>Headers:</p>
-<p>Content-Type: 'application/json'</p>
-<p>Request Body:</p>
-<p>The request body should be a JSON object containing the details of the new training session and a reference link to the customer.</p>
+<p>Add a new training session and link it to a customer.</p>
+<p><strong>Request:</strong></p>
 <ul>
+<li>HTTP Method: <code>POST</code></li>
+<li>Endpoint: <code>/trainings</code></li>
+<li>Request Headers:<ul>
+<li><code>'Content-Type' : 'application/json'</code></li>
+</ul>
+</li>
+<li>Body: JSON object containing the details of the new training session and a reference link to the customer.<ul>
 <li><code>date</code>: The date of the training session. The format must be ISO-8601 (e.g., "2024-11-27T09:12:00.000+000").</li>
 <li><code>activity</code>: The type of activity performed during the training session.</li>
 <li><code>duration</code>: The duration of the training session, in minutes.</li>
 <li><code>customer</code>: A link to the customer associated with the training session.</li>
+</ul>
+</li>
 </ul>
 <p>Example Request:</p>
 <pre><code class="language-json">POST /trainings
@@ -238,18 +252,20 @@ Content-Type: application/json
 <p>Response:</p>
 <p>The response will be a JSON object containing the details of the newly created training session. If the creation is successful, the API will return a 201 Created status code.</p>
 <h3 id="delete-training">Delete Training</h3>
-<p>To delete a specific training session, you can use the <code>DELETE /trainings/{id}</code> endpoint, where <code>{id}</code> is the unique identifier of the training session.</p>
-<p>Request:</p>
-<p>The request does not require a request body, only the training session's id as a path parameter.</p>
-<p>Path Parameters:</p>
+<p>Delete a specific training session.</p>
+<p><strong>Request:</strong></p>
 <ul>
-<li><code>id</code> (required): The unique identifier of the training session. This is an integer.</li>
+<li>HTTP Method: <code>DELETE</code></li>
+<li>Endpoint: <code>/trainings/{id}</code></li>
+<li>Path Parameters: <code>id</code> (integer, required). The unique identifier of the training session.</li>
 </ul>
 <p>Example Request:</p>
 <pre><code>DELETE /trainings/123
 </code></pre>
-<p>Response:</p>
-<p>Upon successful deletion, the API will return a 204 No Content status code. If the training session with the provided id does not exist, the API will return a 404 Not Found status code.</p>
+<p><strong>Response:</strong></p>
+<ul>
+<li>Upon successful deletion, the API will return a 204 No Content status code. If the training session with the provided id does not exist, the API will return a 404 Not Found status code.</li>
+</ul>
               
             </div>
           </div><footer>
