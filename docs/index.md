@@ -6,7 +6,7 @@ This REST API is designed to manage the relationship between personal trainers a
 
 Overview:
 
-The API is structured around two main resources: **Customers** and **Trainings**.
+The API is structured around two main resources: [**Customers**](customers.md) and [**Trainings**](trainings.md).
 
 - Customers represent the individuals who are receiving personal training. Each customer has attributes such as name and contact information.
 
