@@ -5,3 +5,4 @@ theme:
   hljs_languages:
     - js
     - json
+    - bash
