@@ -83,12 +83,12 @@ Retrieve all training sessions along with their associated customer information.
 **Request:**
 
 - HTTP Method: `GET`
-- ENDPOINT: `https://customerrestservice-personaltraining.rahtiapp.fi/gettrainings`
+- ENDPOINT: `/gettrainings`
 - Request parameters: None
  
 Example Request:
 ```
-GET https://customerrestservice-personaltraining.rahtiapp.fi/gettrainings
+GET https://customerrestservice-personaltraining.rahtiapp.fi/api/gettrainings
 ```
 **Response:** 
 
