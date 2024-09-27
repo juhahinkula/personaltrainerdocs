@@ -2,7 +2,7 @@
 
 ## Base URL
 ```
-https://customerrestservice-personaltraining.rahtiapp.fi/api
+https://customer-rest-service-frontend-personaltrainer.2.rahtiapp.fi/api/
 ```
 ## Endpoints
 

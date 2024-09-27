@@ -16,14 +16,14 @@ There is a one-to-many relationship between customers and trainings, meaning tha
 
 ## Base URL
 ```
-https://customerrestservice-personaltraining.rahtiapp.fi/api
+https://customer-rest-service-frontend-personaltrainer.2.rahtiapp.fi/api/
 ```
 
 ## Reset Database
 To reset database you can use the following request that deletes all data from the database and re-populate it with the original demo data. 
 
 ```
-POST https://customerrestservice-personaltraining.rahtiapp.fi/reset
+POST https://customer-rest-service-frontend-personaltrainer.2.rahtiapp.fi/reset
 ```
 Response:
 

@@ -23,6 +23,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/js.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
       <script>hljs.highlightAll();</script> 
 </head>
 
@@ -169,11 +170,11 @@
 <p><strong>Request:</strong></p>
 <ul>
 <li>HTTP Method: <code>GET</code></li>
-<li>ENDPOINT: <code>https://customerrestservice-personaltraining.rahtiapp.fi/gettrainings</code></li>
+<li>ENDPOINT: <code>/gettrainings</code></li>
 <li>Request parameters: None</li>
 </ul>
 <p>Example Request:</p>
-<pre><code>GET https://customerrestservice-personaltraining.rahtiapp.fi/gettrainings
+<pre><code>GET https://customerrestservice-personaltraining.rahtiapp.fi/api/gettrainings
 </code></pre>
 <p><strong>Response:</strong> </p>
 <p>The response will be a JSON object containing an array of training sessions. Each training session object includes the id, date, duration, activity, and the associated customer's information.</p>
