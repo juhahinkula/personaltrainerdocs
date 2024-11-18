@@ -88,7 +88,7 @@ Retrieve all training sessions along with their associated customer information.
  
 Example Request:
 ```
-GET https://customerrestservice-personaltraining.rahtiapp.fi/api/gettrainings
+GET https://customer-rest-service-frontend-personaltrainer.2.rahtiapp.fi/api/gettrainings
 ```
 **Response:** 
 

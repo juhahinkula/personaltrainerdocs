@@ -99,7 +99,7 @@ Create a new customer.
 
 Example Request:
 ```json
-POST https://customerrestservice-personaltraining.rahtiapp.fi/api/customers
+POST https://customer-rest-service-frontend-personaltrainer.2.rahtiapp.fi/api/customers
 Content-Type: application/json
 
 {
